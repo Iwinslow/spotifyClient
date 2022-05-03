@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 131px;
+}
+
+.imgContainer {
+  margin-top: 83.5px;
+}
+
+.imgContainer img {
+  width: 222px;
+  height: 222px;
+}
+.textContainer {
+  margin: 2rem 43px 0;
+}
+
+.textContainer h3 {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 49px;
+  font-weight: bold;
+}
+
+.textContainer h3:nth-child(even) {
+  color: #d6f379;
+}
+
+.textContainer h5 {
+  padding: 2rem 0;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.loginButton {
+  display: flex;
+  font-size: 20px;
+  align-items: center;
+  font-weight: 600;
+  justify-content: flex-start;
+  width: 332px;
+}
+.loginButton h5 {
+  padding: 0 1rem;
+}

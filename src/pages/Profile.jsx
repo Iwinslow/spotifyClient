@@ -1,7 +1,7 @@
-import "../styles/Profile.module.css";
+import style from "../styles/Profile.module.css";
 
 function Profile() {
-  return <div>Profile</div>;
+  return <>Profilee</>;
 }
 
 export default Profile;
