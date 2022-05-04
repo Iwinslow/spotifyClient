@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 48px;
+}
+.titleContainer {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 49px;
+}
+.titleContainer h2:nth-child(even) {
+  color: #d6f379;
+}
+
+.titleContainer p {
+  margin-top: 24px;
+  width: 329px;
+  height: 96px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 32px;
+}
+
+.albumsContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
