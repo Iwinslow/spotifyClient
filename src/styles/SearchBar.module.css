@@ -1,0 +1,30 @@
+.container {
+  margin: 33px 0 45px;
+  width: 338px;
+  height: 62px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  border-radius: 24px;
+}
+.container input {
+  width: 160px;
+  margin-left: 24px;
+  border: none;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.container button {
+  color: black;
+  background-color: #d6f379;
+  width: 150px;
+  height: 46px;
+  border-radius: 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border: 1px solid #d6f379;
+}
