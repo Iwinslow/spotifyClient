@@ -14,8 +14,14 @@ function Login() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (window.location.search) {
-      const token = window.location.search.replace("?code=", "");
+    if (window.location.hash) {
+      console.log(window.location.hash);
+      const hash = window.location.hash;
+      const token = hash
+        .substring(1)
+        .split("&")
+        .find((elem) => elem.startsWith("access_token"))
+        .split("=")[1];
       dispatch(userLogin(token));
       navigate("/search");
     }
@@ -30,7 +36,7 @@ function Login() {
         <div className={style.textContainer}>
           <h3>Disfruta de la</h3>
           <h3>mejor música</h3>
-          <h5>Accede a tu cuenta para guardar tus albumes favoritos.</h5>
+          <p>Accede a tu cuenta para guardar tus albumes favoritos.</p>
         </div>
         <div className={style.loginButton}>
           <h5>Log in con Spotify</h5>
