@@ -47,3 +47,11 @@
 .loginButton h5 {
   padding: 0 1rem;
 }
+.loginButton a {
+  display: flex;
+  background: none;
+  color: inherit;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+}
