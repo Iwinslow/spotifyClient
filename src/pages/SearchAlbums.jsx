@@ -2,18 +2,20 @@ import { useState } from "react";
 import SearchBar from "../components/SearchBar";
 import Card from "../components/Card";
 import Pagination from "../components/Pagination";
-import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 import style from "../styles/SearchAlbums.module.css";
 
 function SearchAlbums() {
+  //Declaración de variables locales y sus estados
+  //SearchResult se configura en el componente SearchBar.jsx y alimenta el render principal de la Page
+  //currentPage alimenta el componente Pagination.jsx
   const [searchResult, setSearchResult] = useState({
     key: "",
-    pages: 0,
+    pages: null,
     result: [],
   });
   const [currentPage, setCurrentPage] = useState(1);
-  console.log(currentPage);
+
   return (
     <div className={style.container}>
       <div className={style.titleContainer}>
@@ -27,11 +29,10 @@ function SearchAlbums() {
 
       <SearchBar setSearchResult={setSearchResult} />
 
-      {searchResult.key && searchResult.pages > 0 ? (
+      {searchResult.key && searchResult.pages > 0 && (
         <h5>Guarda tus álbumes favoritos de {searchResult.key}</h5>
-      ) : (
-        <h5>No se han encontrado resultados</h5>
       )}
+      {searchResult.pages === 0 && <h5>No se han encontrado resultados</h5>}
       <div className={style.albumsContainer}>
         {searchResult.result &&
           searchResult.result

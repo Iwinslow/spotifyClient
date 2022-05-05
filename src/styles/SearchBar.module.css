@@ -29,3 +29,9 @@
   font-weight: bold;
   border: 1px solid #d6f379;
 }
+
+button[disabled] {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
