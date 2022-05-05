@@ -8,12 +8,23 @@ import Navbar from "./components/Navbar";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "./store/user";
+import { getTheme } from "./store/theme";
 
 function App() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  //Trae token y theme alojados en redux store
   const userToken = useSelector((state) => state.user.token);
-  const tokenAtStorage = localStorage.token;
+  const userTheme = useSelector((state) => state.theme.darktheme);
+  //Trae token y theme alojados en localStorage
+  const tokenAtStorage = localStorage.getItem("token");
+  const themeAtStorage = localStorage.getItem("theme");
+
+  console.log("theme REDUX", userTheme);
+  console.log("theme LS", themeAtStorage);
+
+  console.log("token REDUX", userToken);
+  console.log("token LS", tokenAtStorage);
 
   useEffect(() => {
     if (!userToken && !tokenAtStorage) {
@@ -21,6 +32,12 @@ function App() {
     }
     if (tokenAtStorage) {
       dispatch(userLogin(tokenAtStorage));
+    }
+    if (themeAtStorage === null) {
+      localStorage.setItem("theme", userTheme);
+    }
+    if (userTheme !== themeAtStorage) {
+      getTheme();
     }
   }, []);
 
