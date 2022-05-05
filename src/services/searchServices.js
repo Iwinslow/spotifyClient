@@ -9,6 +9,7 @@ export const searchByArtist = async (searchKey, userToken) => {
       params: {
         q: searchKey,
         type: "album",
+        limit: 50,
       },
     });
     return data.data.albums.items;

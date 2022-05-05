@@ -21,9 +21,11 @@ function SearchBar({ setSearchResult }) {
     if (result === "The access token expired") {
       dispatch(userLogout());
     } else {
+      let pages = Math.ceil(result.length / 4);
       setSearchResult({
         key: searchKey,
         result,
+        pages,
       });
     }
   };

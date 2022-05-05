@@ -1,15 +1,19 @@
 import { useState } from "react";
 import SearchBar from "../components/SearchBar";
 import Card from "../components/Card";
+import Pagination from "../components/Pagination";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 import style from "../styles/SearchAlbums.module.css";
 
 function SearchAlbums() {
   const [searchResult, setSearchResult] = useState({
     key: "",
+    pages: 0,
     result: [],
   });
-
+  const [currentPage, setCurrentPage] = useState(1);
+  console.log(currentPage);
   return (
     <div className={style.container}>
       <div className={style.titleContainer}>
@@ -23,13 +27,24 @@ function SearchAlbums() {
 
       <SearchBar setSearchResult={setSearchResult} />
 
-      {searchResult.key && (
+      {searchResult.key && searchResult.pages > 0 ? (
         <h5>Guarda tus álbumes favoritos de {searchResult.key}</h5>
+      ) : (
+        <h5>No se han encontrado resultados</h5>
       )}
       <div className={style.albumsContainer}>
         {searchResult.result &&
-          searchResult.result.map((e, i) => <Card album={e} key={i} />)}
+          searchResult.result
+            .slice(currentPage * 4 - 4, currentPage * 4)
+            .map((e, i) => <Card album={e} key={i} />)}
       </div>
+      {searchResult.pages > 0 && (
+        <Pagination
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          pages={searchResult.pages}
+        />
+      )}
     </div>
   );
 }
