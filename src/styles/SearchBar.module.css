@@ -20,7 +20,7 @@
 }
 
 .container button {
-  color: black;
+  color: black !important;
   background-color: #d6f379;
   width: 150px;
   height: 46px;
@@ -34,4 +34,16 @@ button[disabled] {
   border: 1px solid #999999;
   background-color: #cccccc;
   color: #666666;
+}
+
+@media all and (min-width: 768px) {
+  .container {
+    width: 614px;
+  }
+  .container form {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+  }
 }

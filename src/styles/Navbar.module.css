@@ -31,13 +31,64 @@ a:hover {
 }
 .logoutString {
   display: none;
+  font-size: 16px;
+  font-weight: 600;
+}
+.panelContainer {
+  display: flex;
+  align-items: center;
+}
+.panelContainer button {
+  padding: 0 15px;
+  background: none;
+  color: #ffff;
+  border: none;
+  border-left: 1px solid #fff;
+}
+
+button:hover {
+  color: #d6f379;
 }
 
 @media all and (min-width: 768px) {
   .siteName {
     display: inline;
   }
+  .titleContainer svg {
+    display: none;
+  }
   .logoutString {
     display: inline;
+  }
+  .logoutButton {
+    display: none;
+  }
+  .panelContainer {
+    padding: 0 32px;
+  }
+  .panelContainer a,
+  .panelContainer button {
+    padding: 0 22px;
+  }
+}
+@media all and (min-width: 1024px) {
+  .siteName {
+    display: inline;
+  }
+  .titleContainer svg {
+    display: none;
+  }
+  .logoutString {
+    display: inline;
+  }
+  .logoutButton {
+    display: none;
+  }
+  .panelContainer {
+    padding: 0 42px;
+  }
+  .panelContainer a,
+  .panelContainer button {
+    padding: 0 42px;
   }
 }
