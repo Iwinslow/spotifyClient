@@ -27,6 +27,11 @@ function SearchBar({ setSearchResult }) {
   //Consume el servicio de busqueda de albumes por artista, en caso de que el token haya expirado consume action logout, caso contrario setea el resultado de busqueda (searchResult) con las keys esperadas.
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSearchResult({
+      key: "",
+      pages: null,
+      result: [],
+    });
     const result = await searchByArtist(searchKey, userToken);
     if (result === "The access token expired") {
       dispatch(userLogout());

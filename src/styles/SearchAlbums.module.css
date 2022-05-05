@@ -27,3 +27,16 @@
   justify-content: center;
   flex-wrap: wrap;
 }
+
+@media all and (min-width: 768px) {
+  .titleContainer {
+    margin-top: 80px;
+  }
+  .titleContainer p {
+    width: 457px;
+    text-align: center;
+  }
+  .titleContainer h2 {
+    text-align: center;
+  }
+}

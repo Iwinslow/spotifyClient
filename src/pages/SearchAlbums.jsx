@@ -29,16 +29,20 @@ function SearchAlbums() {
 
       <SearchBar setSearchResult={setSearchResult} />
 
-      {searchResult.key && searchResult.pages > 0 && (
-        <h5>Guarda tus álbumes favoritos de {searchResult.key}</h5>
-      )}
       {searchResult.pages === 0 && <h5>No se han encontrado resultados</h5>}
-      <div className={style.albumsContainer}>
-        {searchResult.result &&
-          searchResult.result
-            .slice(currentPage * 4 - 4, currentPage * 4)
-            .map((e, i) => <Card album={e} key={i} />)}
-      </div>
+
+      {searchResult.key && searchResult.pages > 0 && (
+        <>
+          <h5>Guarda tus álbumes favoritos de {searchResult.key}</h5>
+          <div className={style.albumsContainer}>
+            {searchResult.result &&
+              searchResult.result
+                .slice(currentPage * 4 - 4, currentPage * 4)
+                .map((e, i) => <Card album={e} key={i} />)}
+          </div>
+        </>
+      )}
+
       {searchResult.pages > 0 && (
         <Pagination
           currentPage={currentPage}
