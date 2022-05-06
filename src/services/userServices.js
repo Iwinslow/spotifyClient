@@ -1,14 +1,16 @@
 import axios from "axios";
 
+//VARIABLES DE ENTORNO
+/////Debera modificar las siguientes variables con sus datos para correr el proyecto localmente:
 const SCOPE = process.env.REACT_APP_API_SCOPE;
 const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
-const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
-
+/////Tambien debera modificar la seccion "...&redirect_uri=XXXX" del AUTH_URL por la redirect_uri establecida en su proyecto de spotify
 export const authUserAPILink = () => {
   const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&redirect_uri=https://ivan-winslow-frontend.vercel.app/&response_type=token&scope=${SCOPE}`;
   return AUTH_URL;
 };
 
+//SERVICIOS UTILIZADOS PARA LA SESION DEL USUARIO EN EL CLIENTE:
 export const userLoginService = (token) => {
   //Setea el token en el localStorage del cliente
   localStorage.setItem("token", token);
@@ -25,8 +27,10 @@ export const userLogout = () => {
   ////b) Cuando el token ha expirado
 };
 
+//SERVICIOS UTILIZADOS PARA LEER Y ACTUALIZAR (PUT/DELETE en Spotify)  LOS ALBUMES DEL USUARIO:
 export const getAlbums = async (userToken) => {
   try {
+    //Solicita a spotify todos los albums del usuario
     const res = await axios.get("https://api.spotify.com/v1/me/albums", {
       headers: {
         Authorization: `Bearer ${userToken}`,
@@ -35,9 +39,10 @@ export const getAlbums = async (userToken) => {
         limit: 50,
       },
     });
-
     const items = res.data.items;
 
+    //La respuesta es formateada y organizada para facilitar su exposicion por ARTISTA en la page Profile
+    //En caso de recibir "The access token expired", resetea el token en el localStorage y redux. Luego redirecciona a Login
     const data = items.map((item) => {
       let artistName = item.album.artists[0].name;
 
@@ -64,10 +69,9 @@ export const getAlbums = async (userToken) => {
     }
   }
 };
-
+//Agrega un album a los guardados del usuario utilizando su token y el id del album
+//En caso de recibir "The access token expired", resetea el token en el localStorage y redux. Luego redirecciona a Login
 export const saveAlbum = async ({ userToken, id }) => {
-  console.log(userToken);
-  console.log(id);
   try {
     const data = await axios({
       method: "put",
@@ -92,10 +96,10 @@ export const saveAlbum = async ({ userToken, id }) => {
   }
 };
 
+//Remueve un album especifico de los guardados por el usuario, utilizando su token y  el id del album.
+//En caso de recibir "The access token expired", resetea el token en el localStorage y redux. Luego redirecciona a Login
 export const removeAlbum = async ({ userToken, id }) => {
   try {
-    console.log(userToken);
-    console.log(id);
     const data = await axios({
       method: "delete",
       url: "https://api.spotify.com/v1/me/albums",
@@ -107,7 +111,6 @@ export const removeAlbum = async ({ userToken, id }) => {
       },
     });
     const newAlbumsState = await getAlbums(userToken);
-    console.log(newAlbumsState);
     return newAlbumsState;
   } catch (error) {
     let errorMsj = error.response.data.error.message;

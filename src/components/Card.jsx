@@ -8,9 +8,9 @@ import style from "../styles/Card.module.css";
 
 function Card({ album, btnColor, btnMessage, textColor, btnFunction }) {
   const dispatch = useDispatch();
-  const { name, images, release_date, id } = album;
   const userToken = useSelector((state) => state.user.token);
   const [btnDisabled, setBtnDisabled] = useState(false);
+  const { name, images, release_date, id } = album;
 
   const btnAction = (action) => {
     if (action === "add") {
