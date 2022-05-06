@@ -5,23 +5,26 @@ import style from "../styles/Pagination.module.css";
 function Pagination({ currentPage, setCurrentPage, pages }) {
   //Funciones para acceder a la anterior/siguiente pagina
   const prevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
+    let current = Number(currentPage);
+    if (current > 1) {
+      setCurrentPage(current - 1);
     }
   };
 
   const nextPage = () => {
-    if (currentPage < pages) {
-      setCurrentPage(currentPage + 1);
+    let current = Number(currentPage);
+    if (current < pages) {
+      setCurrentPage(current + 1);
     }
   };
   //Funciones para calcular numeros a renderizar en pantalla de acuerdo a la currentPage
   const previusPagesToRender = (currentPage) => {
-    if (currentPage - 1 === 1) {
-      return [currentPage - 1];
+    let current = Number(currentPage);
+    if (current - 1 === 1) {
+      return [current - 1];
     }
-    if (currentPage - 1 > 1) {
-      return [currentPage - 2, currentPage - 1];
+    if (current - 1 > 1) {
+      return [current - 2, current - 1];
     } else {
       return [];
     }

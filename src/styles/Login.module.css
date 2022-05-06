@@ -43,6 +43,7 @@
   font-weight: 600;
   justify-content: flex-start;
   width: 332px;
+  padding-left: 1.5rem;
 }
 .loginButton h5 {
   padding: 0 1rem;
@@ -54,4 +55,70 @@
   border: none;
   font: inherit;
   cursor: pointer;
+}
+
+@media all and (min-width: 700px) {
+  .container {
+    margin: 10%;
+    width: 80%;
+    align-items: flex-start;
+  }
+  .imgContainer {
+    margin-top: 0;
+  }
+  .textContainer {
+    width: 80%;
+    margin: 2rem 0px 0;
+  }
+  .loginButton {
+    margin-top: 54px;
+    padding-left: 0;
+  }
+  .loginButton h5 {
+    padding: 0 1rem 0 0;
+  }
+}
+
+@media all and (min-width: 1024px) {
+  .container {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .imgContainer img {
+    width: 365px;
+    height: 364px;
+  }
+  .contentContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 40%;
+  }
+
+  .textContainer {
+    width: 100%;
+    margin: 2rem 0px 0;
+  }
+  .loginButton {
+    margin-top: 54px;
+  }
+  .loginButton h5 {
+    padding: 0 1rem 0 0;
+  }
+}
+
+@media all and (min-width: 1420px) {
+  .imgContainer img {
+    width: 465px;
+    height: 464px;
+  }
+
+  .textContainer h3 {
+    font-size: 64px;
+    line-height: 78px;
+  }
+  .textContainer p {
+    width: 80%;
+  }
 }

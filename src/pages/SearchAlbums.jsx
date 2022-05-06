@@ -28,7 +28,10 @@ function SearchAlbums() {
         </p>
       </div>
 
-      <SearchBar setSearchResult={setSearchResult} />
+      <SearchBar
+        setSearchResult={setSearchResult}
+        setCurrentPage={setCurrentPage}
+      />
 
       {searchResult.pages === 0 && <h5>No se han encontrado resultados</h5>}
 

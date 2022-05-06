@@ -1,7 +1,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  margin: 24px 0 24px 0;
+  margin: 24px 42px 24px 0;
 }
 .imgContainer img {
   border-radius: 12px;

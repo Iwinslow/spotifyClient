@@ -41,22 +41,24 @@ function Profile() {
           {userAlbums.length === 0 ? (
             <div>No ha guardado albumes todavía</div>
           ) : (
-            <div className={style.albumsContainer}>
+            <div className={style.sectionContainer}>
               {userAlbums.map((artistSection, i) => (
-                <>
+                <div className={style.artistContainer}>
                   <div className={style.artistName} key={i}>
                     {artistSection[0]}
                   </div>
-                  {artistSection[1].map((e) => (
-                    <Card
-                      album={e.album}
-                      btnColor="#E3513D"
-                      btnMessage="-Remove album"
-                      textColor="#ffff"
-                      btnFunction="remove"
-                    />
-                  ))}
-                </>
+                  <div className={style.artistAlbums}>
+                    {artistSection[1].map((e) => (
+                      <Card
+                        album={e.album}
+                        btnColor="#E3513D"
+                        btnMessage="-Remove album"
+                        textColor="#ffff"
+                        btnFunction="remove"
+                      />
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
           )}

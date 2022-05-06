@@ -1,0 +1,64 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 48px;
+}
+.titleContainer h2 {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 49px;
+}
+.titleContainer h2:nth-child(even) {
+  color: #d6f379;
+}
+
+.titleContainer p {
+  margin-top: 24px;
+  width: 329px;
+  height: 96px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 32px;
+}
+.sectionContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 80%;
+}
+
+.artistContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.artistName {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 39px;
+  margin: 76px 0 24px;
+}
+
+.artistAlbums {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media all and (min-width: 768px) {
+  .titleContainer {
+    margin-top: 80px;
+  }
+  .titleContainer p {
+    width: 457px;
+    text-align: center;
+  }
+  .titleContainer h2 {
+    text-align: center;
+  }
+}
