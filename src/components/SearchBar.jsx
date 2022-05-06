@@ -6,7 +6,7 @@ import { userLogout } from "../store/user";
 
 import style from "../styles/SearchBar.module.css";
 
-function SearchBar({ setSearchResult }) {
+function SearchBar({ setSearchResult, setCurrentPage }) {
   //Selector de variable global USER para request de busqueda
   const userToken = useSelector((state) => state.user.token);
   //Instancia de useDispatch para realizar logout del usuario en caso de que el token haya expirado
@@ -29,6 +29,7 @@ function SearchBar({ setSearchResult }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setBtnstate(true);
+    setCurrentPage(1);
     setSearchResult({
       key: "",
       pages: null,
