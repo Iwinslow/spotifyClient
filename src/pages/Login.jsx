@@ -14,6 +14,8 @@ function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  //Toma el token que coloca Spotify como hash, lo formatea y coloca en redux y local storage,
+  //Luego redirecciona a /search
   useEffect(() => {
     if (window.location.hash) {
       const hash = window.location.hash;

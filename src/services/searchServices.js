@@ -1,5 +1,6 @@
 import axios from "axios";
 
+//SERVICIO UTILIZADO PARA BUSCAR ALBUMS MEDIANTE UNA "search key"
 export const searchByArtist = async (searchKey, userToken) => {
   try {
     const data = await axios.get("https://api.spotify.com/v1/search", {
