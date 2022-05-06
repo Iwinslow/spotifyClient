@@ -27,7 +27,7 @@ function App() {
     if (tokenAtStorage) {
       dispatch(userLogin(tokenAtStorage));
     }
-  });
+  }, []);
 
   return (
     <div className={userTheme ? style.globalDark : style.globalLight}>
