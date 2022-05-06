@@ -42,3 +42,11 @@
   justify-content: center;
   border: none;
 }
+.container button:hover {
+  text-shadow: 1px 0px 0px #666666;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.container button:active {
+  transform: translateY(1px);
+}

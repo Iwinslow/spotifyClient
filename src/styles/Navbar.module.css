@@ -45,6 +45,9 @@ a:hover {
   border: none;
   border-left: 1px solid #fff;
 }
+.panelContainer svg {
+  cursor: pointer;
+}
 
 button:hover {
   color: #d6f379;
