@@ -1,7 +1,6 @@
 import { getUserAlbums, userLogout } from "../store/user";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import swal from "sweetalert";
 import { FaReact, FaSpotify } from "react-icons/fa";
 
 import Card from "../components/Card";

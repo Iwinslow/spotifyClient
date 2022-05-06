@@ -8,7 +8,6 @@ import Navbar from "./components/Navbar";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "./store/user";
-import { getTheme } from "./store/theme";
 
 import style from "./styles/App.module.css";
 
@@ -18,12 +17,8 @@ function App() {
   //Trae token y theme alojados en redux store
   const userToken = useSelector((state) => state.user.token);
   const userTheme = useSelector((state) => state.theme.darktheme);
-  //Trae token y theme alojados en localStorage
+  //Trae token alojado en localStorage
   const tokenAtStorage = localStorage.getItem("token");
-  const themeAtStorage = localStorage.getItem("theme");
-
-  console.log("theme", userTheme);
-  console.log("theme at lg", themeAtStorage);
 
   useEffect(() => {
     if (!userToken && !tokenAtStorage) {
@@ -32,7 +27,7 @@ function App() {
     if (tokenAtStorage) {
       dispatch(userLogin(tokenAtStorage));
     }
-  }, []);
+  });
 
   return (
     <div className={userTheme ? style.globalDark : style.globalLight}>

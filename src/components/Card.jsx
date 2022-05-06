@@ -38,7 +38,7 @@ function Card({ album, btnColor, btnMessage, textColor, btnFunction }) {
   return (
     <div className={style.container}>
       <div className={style.imgContainer}>
-        <img src={images[0].url} alt="album photo" />
+        <img src={images[0].url} alt="Portada del album" />
       </div>
       <span>{name}</span>
       <p>Publicado: {release_date}</p>
