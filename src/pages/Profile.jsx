@@ -1,5 +1,5 @@
 import style from "../styles/Profile.module.css";
-import { getUserAlbums } from "../store/user";
+import { getUserAlbums, userLogout } from "../store/user";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../components/Card";
@@ -11,6 +11,9 @@ function Profile() {
 
   useEffect(() => {
     dispatch(getUserAlbums(userToken));
+    if (userAlbums === "The access token expired") {
+      dispatch(userLogout());
+    }
   }, [userToken]);
   console.log("albums en profile", userAlbums);
 

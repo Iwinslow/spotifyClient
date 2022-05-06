@@ -57,6 +57,7 @@ export const getAlbums = async (userToken) => {
   } catch (error) {
     let errorMsj = error.response.data.error.message;
     if (errorMsj === "The access token expired") {
+      userLogout();
       return errorMsj;
     } else {
       console.log(error.message);
@@ -64,7 +65,9 @@ export const getAlbums = async (userToken) => {
   }
 };
 
-export const saveAlbum = async (userToken, id) => {
+export const saveAlbum = async ({ userToken, id }) => {
+  console.log(userToken);
+  console.log(id);
   try {
     const data = await axios({
       method: "put",
@@ -76,10 +79,12 @@ export const saveAlbum = async (userToken, id) => {
         ids: [`${id}`],
       },
     });
-    return data;
+    const newAlbumsState = await getAlbums(userToken);
+    return newAlbumsState;
   } catch (error) {
     let errorMsj = error.response.data.error.message;
     if (errorMsj === "The access token expired") {
+      userLogout();
       return errorMsj;
     } else {
       console.log(error.message);
@@ -87,21 +92,27 @@ export const saveAlbum = async (userToken, id) => {
   }
 };
 
-export const removeAlbum = async (userToken, id) => {
+export const removeAlbum = async ({ userToken, id }) => {
   try {
-    const data = await axios.delete("https://api.spotify.com/v1/me/albums", {
+    console.log(userToken);
+    console.log(id);
+    const data = await axios({
+      method: "delete",
+      url: "https://api.spotify.com/v1/me/albums",
       headers: {
         Authorization: `Bearer ${userToken}`,
       },
-      data: {
+      params: {
         ids: `${id}`,
       },
     });
-
-    return data;
+    const newAlbumsState = await getAlbums(userToken);
+    console.log(newAlbumsState);
+    return newAlbumsState;
   } catch (error) {
     let errorMsj = error.response.data.error.message;
     if (errorMsj === "The access token expired") {
+      userLogout();
       return errorMsj;
     } else {
       console.log(error.message);

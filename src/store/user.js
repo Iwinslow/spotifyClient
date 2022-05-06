@@ -21,6 +21,16 @@ export const getUserAlbums = createAsyncThunk(
   userServices.getAlbums
 );
 
+export const saveUserAlbum = createAsyncThunk(
+  "SAVE ALBUM",
+  userServices.saveAlbum
+);
+
+export const removeUserAlbum = createAsyncThunk(
+  "REMOVE ALBUM",
+  userServices.removeAlbum
+);
+
 const userSlice = createSlice({
   name: "user",
   initialState: userInitialState,
@@ -58,6 +68,30 @@ const userSlice = createSlice({
       state.loading = false;
     },
     [getUserAlbums.rejected]: (state, action) => {
+      state.error = action.error.message;
+      state.loading = false;
+    },
+    //EXTRAREDUCERs para Agregar album al perfil
+    [saveUserAlbum.pending]: (state) => {
+      state.loading = true;
+    },
+    [saveUserAlbum.fulfilled]: (state, action) => {
+      state.albums = action.payload;
+      state.loading = false;
+    },
+    [saveUserAlbum.rejected]: (state, action) => {
+      state.error = action.error.message;
+      state.loading = false;
+    },
+    //EXTRAREDUCERs para Eliminar album del perfil
+    [removeUserAlbum.pending]: (state) => {
+      state.loading = true;
+    },
+    [removeUserAlbum.fulfilled]: (state, action) => {
+      state.albums = action.payload;
+      state.loading = false;
+    },
+    [removeUserAlbum.rejected]: (state, action) => {
       state.error = action.error.message;
       state.loading = false;
     },
