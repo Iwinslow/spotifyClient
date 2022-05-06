@@ -10,8 +10,9 @@
 
 .pagination button {
   background: none;
-  color: #fff;
+  cursor: pointer;
   border: none;
+  color: inherit;
 }
 
 .pagination span {

@@ -10,6 +10,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "./store/user";
 import { getTheme } from "./store/theme";
 
+import style from "./styles/App.module.css";
+
 function App() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -20,6 +22,9 @@ function App() {
   const tokenAtStorage = localStorage.getItem("token");
   const themeAtStorage = localStorage.getItem("theme");
 
+  console.log("theme", userTheme);
+  console.log("theme at lg", themeAtStorage);
+
   useEffect(() => {
     if (!userToken && !tokenAtStorage) {
       navigate("/");
@@ -27,22 +32,16 @@ function App() {
     if (tokenAtStorage) {
       dispatch(userLogin(tokenAtStorage));
     }
-    if (themeAtStorage === null) {
-      localStorage.setItem("theme", userTheme);
-    }
-    if (userTheme !== themeAtStorage) {
-      getTheme();
-    }
   }, []);
 
   return (
-    <>
+    <div className={userTheme ? style.globalDark : style.globalLight}>
       <Navbar />
       <Routes>
         <Route path="/" element={!userToken ? <Login /> : <SearchAlbums />} />
         <Route path="/me" element={userToken ? <Profile /> : <Login />} />
       </Routes>
-    </>
+    </div>
   );
 }
 

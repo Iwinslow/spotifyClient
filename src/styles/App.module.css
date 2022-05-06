@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.globalDark {
+  font-family: "Montserrat", sans-serif;
+  color: #ffff;
+  background: black;
+
+  height: 100%;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: scroll;
+}
+
+.globalLight {
+  font-family: "Montserrat", sans-serif;
+  color: black;
+  background: #ffff;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: scroll;
+}

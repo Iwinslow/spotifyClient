@@ -9,5 +9,6 @@ export const toggleTheTheme = (current) => {
 
 export const getThemeFromLocalStorage = () => {
   let storedTheme = localStorage.getItem("theme");
+  console.log(storedTheme);
   return storedTheme;
 };
