@@ -31,32 +31,48 @@ function Navbar() {
                 <h1 className={style.siteName}>REACT.MUSIC</h1>
                 <FaReact />
               </div>
-              <div className={style.panelContainer}>
-                <Link to="/">Buscar</Link>
-                <Link to="/me">My albums</Link>
-                <button
-                  className={style.logoutString}
-                  onClick={() => dispatch(userLogout())}
-                >
-                  Cerrar sesión
-                </button>
-                <button
-                  className={style.logoutButton}
-                  onClick={() => dispatch(userLogout())}
-                >
-                  <IoLogOutOutline />
-                </button>
+              {userTheme === true ? (
+                <div className={style.panelContainer}>
+                  <Link to="/">Buscar</Link>
+                  <Link to="/me">My albums</Link>
+                  <button
+                    className={style.logoutString}
+                    onClick={() => dispatch(userLogout())}
+                  >
+                    Cerrar sesión
+                  </button>
+                  <button
+                    className={style.logoutButton}
+                    onClick={() => dispatch(userLogout())}
+                  >
+                    <IoLogOutOutline />
+                  </button>
 
-                {userTheme === true ? (
                   <button className={style.themeButton} onClick={changeTheme}>
                     <BsSun />
                   </button>
-                ) : (
+                </div>
+              ) : (
+                <div className={style.panelContainerLight}>
+                  <Link to="/">Buscar</Link>
+                  <Link to="/me">My albums</Link>
+                  <button
+                    className={style.logoutString}
+                    onClick={() => dispatch(userLogout())}
+                  >
+                    Cerrar sesión
+                  </button>
+                  <button
+                    className={style.logoutButton}
+                    onClick={() => dispatch(userLogout())}
+                  >
+                    <IoLogOutOutline />
+                  </button>
                   <button className={style.themeButton} onClick={changeTheme}>
                     <BsMoon />
                   </button>
-                )}
-              </div>
+                </div>
+              )}
             </>
           )}
         </div>

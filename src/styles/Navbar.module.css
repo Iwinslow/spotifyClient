@@ -14,13 +14,14 @@
   height: 27px;
 }
 
-a {
+.panelContainer a {
   text-decoration: none;
-  color: #fff;
   font-weight: 600;
   font-size: 16px;
   padding: 0 12px;
+  color: #ffff;
 }
+
 a:hover {
   color: #d6f379;
 }
@@ -39,12 +40,32 @@ a:hover {
   align-items: center;
 }
 .panelContainer button {
+  color: #ffff;
   padding: 0 15px;
   background: none;
-  color: #ffff;
   border: none;
   border-left: 1px solid #fff;
 }
+.panelContainerLight {
+  display: flex;
+  align-items: center;
+}
+
+.panelContainerLight a {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 0 12px;
+  color: black;
+}
+.panelContainerLight button {
+  color: black;
+  padding: 0 15px;
+  background: none;
+  border: none;
+  border-left: 1px solid black;
+}
+
 .panelContainer svg {
   cursor: pointer;
 }
@@ -73,6 +94,14 @@ button:hover {
   .panelContainer button {
     padding: 0 22px;
   }
+  .panelContainerLight {
+    padding: 0 32px;
+  }
+
+  .panelContainerLight a,
+  .panelContainerLight button {
+    padding: 0 22px;
+  }
 }
 @media all and (min-width: 1024px) {
   .siteName {
@@ -92,6 +121,13 @@ button:hover {
   }
   .panelContainer a,
   .panelContainer button {
+    padding: 0 42px;
+  }
+  .panelContainerLight {
+    padding: 0 42px;
+  }
+  .panelContainerLight a,
+  .panelContainerLight button {
     padding: 0 42px;
   }
 }
