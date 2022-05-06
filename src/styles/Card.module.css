@@ -30,8 +30,7 @@
 }
 
 .container button {
-  color: black;
-  background-color: #d6f379;
+  color: black !important;
   width: 154px;
   height: 44px;
   padding: 24px;

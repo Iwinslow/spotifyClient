@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const SCOPE = process.env.REACT_APP_API_SCOPE;
 const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
 const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URI;
@@ -21,4 +23,88 @@ export const userLogout = () => {
   //Este servicio se consume en dos situaciones (siempre mediante la Action userLogout):
   ////a) Cuando el usuario cierra su sesion
   ////b) Cuando el token ha expirado
+};
+
+export const getAlbums = async (userToken) => {
+  try {
+    const res = await axios.get("https://api.spotify.com/v1/me/albums", {
+      headers: {
+        Authorization: `Bearer ${userToken}`,
+      },
+      params: {
+        limit: 50,
+      },
+    });
+
+    const items = res.data.items;
+
+    const data = items.map((item) => {
+      let artistName = item.album.artists[0].name;
+
+      let albumsOfThis = items.filter((i) => {
+        return i.album.artists[0].name === artistName;
+      });
+
+      return {
+        artist: artistName,
+        albums: albumsOfThis,
+      };
+    });
+    const albumsPerArtist = [
+      ...data.reduce((map, obj) => map.set(obj.artist, obj.albums), new Map()),
+    ];
+    return albumsPerArtist;
+  } catch (error) {
+    let errorMsj = error.response.data.error.message;
+    if (errorMsj === "The access token expired") {
+      return errorMsj;
+    } else {
+      console.log(error.message);
+    }
+  }
+};
+
+export const saveAlbum = async (userToken, id) => {
+  try {
+    const data = await axios({
+      method: "put",
+      url: "https://api.spotify.com/v1/me/albums",
+      headers: {
+        Authorization: `Bearer ${userToken}`,
+      },
+      data: {
+        ids: [`${id}`],
+      },
+    });
+    return data;
+  } catch (error) {
+    let errorMsj = error.response.data.error.message;
+    if (errorMsj === "The access token expired") {
+      return errorMsj;
+    } else {
+      console.log(error.message);
+    }
+  }
+};
+
+export const removeAlbum = async (userToken, id) => {
+  try {
+    const data = await axios.delete("https://api.spotify.com/v1/me/albums", {
+      headers: {
+        Authorization: `Bearer ${userToken}`,
+      },
+      data: {
+        ids: `${id}`,
+      },
+    });
+
+    return data;
+  } catch (error) {
+    let errorMsj = error.response.data.error.message;
+    if (errorMsj === "The access token expired") {
+      return errorMsj;
+    } else {
+      console.log(error.message);
+    }
+  }
 };

@@ -1,9 +1,21 @@
+import { useSelector } from "react-redux";
+
+import { saveAlbum, removeAlbum } from "../services/userServices";
+
 import style from "../styles/Card.module.css";
 
-function Card({ album }) {
-  const { name, images, release_date } = album;
+function Card({ album, btnColor, btnMessage, textColor, btnFunction }) {
+  const { name, images, release_date, id } = album;
+  const userToken = useSelector((state) => state.user.token);
 
-  const addAlbum = () => {};
+  const btnAction = (action) => {
+    if (action === "add") {
+      saveAlbum(userToken, id);
+    }
+    if (action === "remove") {
+      removeAlbum(userToken, id);
+    }
+  };
 
   return (
     <div className={style.container}>
@@ -12,7 +24,12 @@ function Card({ album }) {
       </div>
       <span>{name}</span>
       <p>Publicado: {release_date}</p>
-      <button onClick={addAlbum}>+Add album</button>
+      <button
+        style={{ background: `${btnColor}`, color: `${textColor}` }}
+        onClick={() => btnAction(btnFunction)}
+      >
+        {btnMessage}
+      </button>
     </div>
   );
 }

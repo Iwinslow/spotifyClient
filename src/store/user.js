@@ -1,10 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
 import * as userServices from "../services/userServices";
 
 const userInitialState = {
   loading: false,
   token: "",
   error: "",
+  albums: [],
 };
 
 export const userLogin = createAsyncThunk(
@@ -13,6 +15,11 @@ export const userLogin = createAsyncThunk(
 );
 
 export const userLogout = createAsyncThunk("LOGOUT", userServices.userLogout);
+
+export const getUserAlbums = createAsyncThunk(
+  "GET ALBUMS",
+  userServices.getAlbums
+);
 
 const userSlice = createSlice({
   name: "user",
@@ -39,6 +46,18 @@ const userSlice = createSlice({
       state.loading = false;
     },
     [userLogout.rejected]: (state, action) => {
+      state.error = action.error.message;
+      state.loading = false;
+    },
+    //EXTRAREDUCERs para getAlbums
+    [getUserAlbums.pending]: (state) => {
+      state.loading = true;
+    },
+    [getUserAlbums.fulfilled]: (state, action) => {
+      state.albums = action.payload;
+      state.loading = false;
+    },
+    [getUserAlbums.rejected]: (state, action) => {
       state.error = action.error.message;
       state.loading = false;
     },

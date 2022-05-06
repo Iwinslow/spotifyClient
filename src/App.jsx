@@ -20,12 +20,6 @@ function App() {
   const tokenAtStorage = localStorage.getItem("token");
   const themeAtStorage = localStorage.getItem("theme");
 
-  console.log("theme REDUX", userTheme);
-  console.log("theme LS", themeAtStorage);
-
-  console.log("token REDUX", userToken);
-  console.log("token LS", tokenAtStorage);
-
   useEffect(() => {
     if (!userToken && !tokenAtStorage) {
       navigate("/");

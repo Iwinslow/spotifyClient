@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import SearchBar from "../components/SearchBar";
 import Card from "../components/Card";
 import Pagination from "../components/Pagination";
@@ -38,7 +39,16 @@ function SearchAlbums() {
             {searchResult.result &&
               searchResult.result
                 .slice(currentPage * 4 - 4, currentPage * 4)
-                .map((e, i) => <Card album={e} key={i} />)}
+                .map((e, i) => (
+                  <Card
+                    btnColor="#D6F379"
+                    btnMessage="+Add album"
+                    album={e}
+                    key={i}
+                    textColor="#000000"
+                    btnFunction="add"
+                  />
+                ))}
           </div>
         </>
       )}
