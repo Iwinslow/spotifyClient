@@ -50,3 +50,15 @@
 .container button:active {
   transform: translateY(1px);
 }
+
+@media all and (min-width: 930px) {
+  .container {
+    margin: 24px 80px 24px 24px;
+  }
+}
+
+@media all and (min-width: 1128px) {
+  .container {
+    margin: 24px 48px;
+  }
+}

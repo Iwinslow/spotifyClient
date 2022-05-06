@@ -40,3 +40,13 @@
     text-align: center;
   }
 }
+
+@media all and (min-width: 1128px) {
+  .albumsContainer {
+    justify-content: flex-start;
+  }
+  .titleContainer h2 {
+    font-size: 64px;
+    line-height: 78px;
+  }
+} ;

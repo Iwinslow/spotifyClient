@@ -62,3 +62,20 @@
     text-align: center;
   }
 }
+@media all and (min-width: 930px) {
+  .artistName {
+    margin: 76px 0 24px 24px;
+  }
+}
+
+@media all and (min-width: 1128px) {
+  .artistName {
+    margin: 76px 0 24px 48px;
+  }
+  .artistAlbums {
+    justify-content: flex-start;
+  }
+  .sectionContainer {
+    width: 100%;
+  }
+}
