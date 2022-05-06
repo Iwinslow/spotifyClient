@@ -1,19 +1,20 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
-import { saveAlbum, removeAlbum } from "../services/userServices";
+import { saveUserAlbum, removeUserAlbum } from "../store/user";
 
 import style from "../styles/Card.module.css";
 
 function Card({ album, btnColor, btnMessage, textColor, btnFunction }) {
+  const dispatch = useDispatch();
   const { name, images, release_date, id } = album;
   const userToken = useSelector((state) => state.user.token);
 
   const btnAction = (action) => {
     if (action === "add") {
-      saveAlbum(userToken, id);
+      dispatch(saveUserAlbum({ userToken, id }));
     }
     if (action === "remove") {
-      removeAlbum(userToken, id);
+      dispatch(removeUserAlbum({ userToken, id }));
     }
   };
 
