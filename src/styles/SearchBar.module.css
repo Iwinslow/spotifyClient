@@ -30,10 +30,23 @@
   border: 1px solid #d6f379;
 }
 
+.container button:hover {
+  text-shadow: 1px 0px 0px #666666;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.container button:active {
+  transform: translateY(1px);
+}
 button[disabled] {
   border: 1px solid #999999;
   background-color: #cccccc;
   color: #666666;
+}
+button[disabled]:hover {
+  transform: none;
+  box-shadow: none;
+  text-shadow: none;
 }
 
 @media all and (min-width: 768px) {

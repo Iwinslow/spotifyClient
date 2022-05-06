@@ -17,6 +17,7 @@ function SearchBar({ setSearchResult }) {
 
   //Funcion que actualiza el estado de searchKey
   const handleChange = (e) => {
+    setBtnstate(false);
     setSearchKey(e.target.value);
   };
   //Efecto secundario que se actualiza cada vez que cambia searchKey. Habilita o deshabilita el Boton SEARCH
@@ -27,6 +28,7 @@ function SearchBar({ setSearchResult }) {
   //Consume el servicio de busqueda de albumes por artista, en caso de que el token haya expirado consume action logout, caso contrario setea el resultado de busqueda (searchResult) con las keys esperadas.
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setBtnstate(true);
     setSearchResult({
       key: "",
       pages: null,
