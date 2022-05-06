@@ -34,7 +34,7 @@ function Login() {
       );
       navigate("/search");
     }
-  }, []);
+  });
 
   return (
     <>
