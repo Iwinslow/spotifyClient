@@ -1,6 +1,8 @@
 <h1>¡Muchas gracias por esta oportunidad!</h1>
 
 <h3>Consideraciones</h3>
+<p>Para consumir la aplicación a traves del sitio web deployado en vercel(https://ivan-winslow-frontend.vercel.app/) deberan ser agregados a la lista de Usuarios Autorizados, caso contrario no podran realizar busquedas.</p>
+
 <p>El proyecto fue realizado utilizando el siguiente stack de tecnologías:</p>
 <ul>
     <li>ReactJS</li>
