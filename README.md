@@ -1,7 +1,6 @@
-<h1>¡Muchas gracias por esta oportunidad!</h1>
+<h1>SPOTIFY CLIENT</h1>
 
 <h3>Consideraciones</h3>
-<p>Para consumir la aplicación a traves del sitio web deployado en vercel(https://ivan-winslow-frontend.vercel.app/) deberan ser agregados a la lista de Usuarios Autorizados, caso contrario no podran realizar busquedas.</p>
 
 <p>El proyecto fue realizado utilizando el siguiente stack de tecnologías:</p>
 <ul>
@@ -16,6 +15,7 @@
 <h3>Instrucciones para correr el proyecto</h3>
 <p>Podrá visualizar el proyecto deployado en el siguiente link</p>
 <a>https://ivan-winslow-frontend.vercel.app/</a>
+<p>Para consumir la aplicación a traves del sitio web deployado en vercel(https://ivan-winslow-frontend.vercel.app/) deberan ser agregados a la lista de Usuarios Autorizados, caso contrario no podran consumir los servicios de Spotify bajo el Client deployado.</p>
 
 <p>Podrá utilizar el código de este repositorio siguiendo estos pasos:</p>
 <ol>
@@ -33,4 +33,4 @@
 </ul>
 <p>Tambien debera modificar en este archvio la <b>"redirect_uri"</b>, por defecto se encuentra la URI del proyecto en producción.</p>
 
-y, nuevamente<h1>¡Muchas gracias por esta oportunidad!</h1>
+<h1>¡Have Fun!</h1>
